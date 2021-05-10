@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Save The Ball!</title>
+<style>
+    #newcanvas { border: 3px dashed blue; background-color: bisque}</style>
+</head>
+<body>
+<canvas id="newcanvas" width="640" height="480"></canvas>
+<script type="text/javascript">
+    var height = 480;
+    var width = 640;
+    function topLeft(objW, objH) {
+        return [10, 10, objW, objH];
+    }
+    function topRight(objW, objH) {
+        return [width - objW - 10, 10, objW, objH];
+    }
+    function bottomLeft(objW, objH) {
+        return [10, height - objH - 10, objW, objH];
+    }
+    function bottomRight(objW, objH) {
+        return [width - objW - 10, height - objH - 10, objW, objH];
+    }
+    function center(objW, objH) {
+        return [width/2 - objW/2, height/2 - objH/2, objW, objH];
+    }
+    function fillRect(ctx, sizeMatrix) {
+        ctx.fillRect(sizeMatrix[0], sizeMatrix[1], sizeMatrix[2], sizeMatrix[3]);
+    }
+    
+    var canvas = document.getElementById("newcanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#ffff00";
+    
+    var objHeight = 200;
+    var objWidth = 100;
+    fillRect(ctx, topLeft(objWidth, objHeight));
+    fillRect(ctx, topRight(objWidth, objHeight));
+    fillRect(ctx, bottomLeft(objWidth, objHeight));
+    fillRect(ctx, bottomRight(objWidth, objHeight));
+    fillRect(ctx, center(objWidth, objHeight));
+</script>
+</body>
+</html>
